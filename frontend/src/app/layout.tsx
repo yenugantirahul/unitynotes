@@ -1,7 +1,6 @@
 // app/layout.tsx
 "use client"; // <-- Add this at the top
 
-import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";

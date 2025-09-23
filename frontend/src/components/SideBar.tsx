@@ -5,15 +5,16 @@ import { Button } from "./ui/button";
 import { CiSettings } from "react-icons/ci";
 // Corrected Imports: Use 'next/navigation' for App Router
 import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
-
+import { SetStateAction } from "react";
+interface SideBarTypes {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: React.Dispatch<SetStateAction<boolean>>;
+}
 // Accept props from the layout
-const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const [active, setActive] = useState("Home");
-
+const SideBar = ({ isSidebarOpen, setIsSidebarOpen }: SideBarTypes) => {
   // This is the correct router for the App Directory
   const router = useRouter();
-  const pathName = usePathname();
+  const pathName: string = usePathname();
   const menuItems = [
     { name: "Home", icon: <FaHome />, path: "/" },
     { name: "Profile", icon: <FaUser />, path: "/profile" },
@@ -21,7 +22,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     { name: "Settings", icon: <CiSettings />, path: "/settings" },
   ];
 
-  const handleNavigation = (path) => {
+  const handleNavigation = (path: string) => {
     router.push(path);
     setIsSidebarOpen(false);
   };

@@ -3,7 +3,6 @@ import { SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
 import { FaSearch, FaBars } from "react-icons/fa";
 import { RiAddLargeLine } from "react-icons/ri";
-import { useRouter } from "next/navigation";
 interface HeaderTypes {
   setIsSidebarOpen: React.Dispatch<SetStateAction<boolean>>;
 }

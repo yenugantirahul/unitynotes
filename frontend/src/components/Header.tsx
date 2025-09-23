@@ -1,11 +1,13 @@
 "use client";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
 import { FaSearch, FaBars } from "react-icons/fa";
 import { RiAddLargeLine } from "react-icons/ri";
 import { useRouter } from "next/navigation";
-
-const Header = ({ setIsSidebarOpen }) => {
+interface HeaderTypes {
+  setIsSidebarOpen: React.Dispatch<SetStateAction<boolean>>;
+}
+const Header = ({ setIsSidebarOpen }: HeaderTypes) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // 1. Add state for the search input value
   const [searchQuery, setSearchQuery] = useState("");

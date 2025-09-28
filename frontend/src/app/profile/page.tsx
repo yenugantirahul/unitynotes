@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { Card, CardDescription, CardHeader } from "@/components/ui/card";
-import { CgProfile } from "react-icons/cg";
+import { Card, CardHeader } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 
 export default async function PrivatePage() {

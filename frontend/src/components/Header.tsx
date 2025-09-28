@@ -1,8 +1,10 @@
 "use client";
 import { SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
-import { FaSearch, FaBars } from "react-icons/fa";
+import { FaSearch, FaBars, FaSun, FaMoon } from "react-icons/fa";
 import { RiAddLargeLine } from "react-icons/ri";
+import Link from "next/link";
+import { useTheme } from "next-themes";
 interface HeaderTypes {
   setIsSidebarOpen: React.Dispatch<SetStateAction<boolean>>;
 }
@@ -27,11 +29,12 @@ const Header = ({ setIsSidebarOpen }: HeaderTypes) => {
     setIsModalOpen(false);
     setSearchQuery("");
   };
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="flex">
       {/* Header */}
-      <div className="lg:h-[130px] h-[80px] p-5 flex justify-between items-center bg-[#63688A] w-full shadow-md">
+      <div className="lg:h-[130px] h-[80px] p-5 flex justify-between items-center bg-gradient-to-b bg-[#63688A] to-[#4B507D] dark:bg-black w-full shadow-md">
         <div className="flex items-center gap-2">
           {/* Hamburger for mobile sidebar */}
           <Button
@@ -58,14 +61,22 @@ const Header = ({ setIsSidebarOpen }: HeaderTypes) => {
         <div className="flex gap-2">
           <Button
             onClick={() => setIsModalOpen(true)}
-            className="bg-white lg:hidden block text-black p-2 rounded-md hover:bg-gray-200 transition-colors"
+            className="bg-white lg:hidden block text-black p-2 cursor-pointer rounded-md hover:bg-gray-200 transition-colors"
           >
             <FaSearch />
           </Button>
-
-          <Button className="bg-white cursor-pointer lg:h-[50px] lg:w-[50px] text-5xl text-black p-2 rounded-md hover:bg-gray-200 transition-colors">
-            <RiAddLargeLine />
+          <Button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="bg-white lg:h-[50px] lg:w-[50px] text-center lg:pl-2 flex items-center  justify-center cursor-pointer text-black p-2 rounded-md hover:bg-gray-200 transition-colors"
+          >
+            {theme === "light" ? <FaSun /> : <FaMoon />}
           </Button>
+
+          <Link href={"/create"}>
+            <Button className="bg-white cursor-pointer lg:h-[50px] lg:w-[50px] text-5xl text-black p-2 rounded-md hover:bg-gray-200 transition-colors">
+              <RiAddLargeLine />
+            </Button>
+          </Link>
         </div>
       </div>
 

@@ -78,8 +78,7 @@ const Auth = ({ title, desc, fields, btn }: AuthTypes) => {
         await login(data);
       }
     } catch (err) {
-      setError(err.message || "An error occurred. Please try again.");
-    } finally {
+  setError((err as Error).message || "An error occurred. Please try again.");    } finally {
       setIsLoading(false);
     }
   };

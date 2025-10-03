@@ -69,7 +69,7 @@ const Header = ({ setIsSidebarOpen }: HeaderTypes) => {
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="bg-white lg:h-[50px] lg:w-[50px] text-center lg:pl-2 flex items-center  justify-center cursor-pointer text-black p-2 rounded-md hover:bg-gray-200 transition-colors"
           >
-            {theme === "light" ? <FaSun /> : <FaMoon />}
+            {theme === "light" ? <FaMoon /> : <FaSun />}
           </Button>
 
           <Link href={"/create"}>

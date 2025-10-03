@@ -60,6 +60,12 @@ export async function signup(formData: FormData) {
     throw new Error("Signup failed: No user ID returned.");
   }
 
+  const userId = signUpData.user.id;
+  const defaultUsername = `user_${Math.floor(Math.random() * 10000)}`;
+  const { error: profileError } = await supabase.from("profiles").insert({
+    id: userId, // Make sure profiles.id references users.id
+    username: defaultUsername,
+  });
   revalidatePath("/", "layout");
   redirect("/");
 }

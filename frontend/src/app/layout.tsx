@@ -9,6 +9,7 @@ import { useState } from "react"; // <-- Import useState
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/context/AuthContext";
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -36,26 +37,28 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} flex min-h-screen`}>
         {/* Pass state down to the Sidebar */}
-        <ThemeProvider
-          attribute="class" // 👈 adds "class=dark" on <html>
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SideBar
-            isSidebarOpen={isSidebarOpen}
-            setIsSidebarOpen={setIsSidebarOpen}
-          />
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class" // 👈 adds "class=dark" on <html>
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SideBar
+              isSidebarOpen={isSidebarOpen}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
 
-          <div className="flex flex-1 flex-col">
-            {/* Pass the setter function down to the Header */}
-            <Header setIsSidebarOpen={setIsSidebarOpen} />
+            <div className="flex flex-1 flex-col">
+              {/* Pass the setter function down to the Header */}
+              <Header setIsSidebarOpen={setIsSidebarOpen} />
 
-            <main className="flex-1 overflow-y-auto dark:bg-gray-900 bg-white p-8">
-              {children}
-            </main>
-          </div>
-        </ThemeProvider>
+              <main className="flex-1 overflow-y-auto dark:bg-gray-900 bg-white p-8">
+                {children}
+              </main>
+            </div>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

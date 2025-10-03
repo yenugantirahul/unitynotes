@@ -61,7 +61,7 @@ export default function Authentication() {
       {isLoggedIn ? (
         <Button
           onClick={logout}
-          className="flex items-center justify-center h-[50px] lg:w-[300px] w-[250px] tracking-[5px] text-2xl cursor-pointer mx-auto"
+          className="flex items-center mt-[10%] justify-center h-[50px] lg:w-[300px] w-[250px] tracking-[5px] text-2xl cursor-pointer mx-auto"
         >
           Logout
         </Button>

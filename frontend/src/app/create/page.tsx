@@ -1,15 +1,7 @@
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+import React from "react";
 
-const Create = async () => {
-  const supabase = await createClient();
-
-  // 1️⃣ Get the current authenticated user
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError || !userData?.user) {
-    redirect("/login");
-  }
-  return <div>Create Notes</div>;
+const Create = () => {
+  return <div>Create</div>;
 };
 
 export default Create;

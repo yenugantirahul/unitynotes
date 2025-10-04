@@ -13,8 +13,8 @@ export default function PrivatePage() {
     useAuth();
   const router = useRouter();
 
-  if (!useId) {
-    router.push("/login"); // ✅ client-side redirect
+  if (!userId) {
+    router.push("/login");
     return null;
   }
 
